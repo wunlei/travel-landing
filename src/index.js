@@ -20,6 +20,9 @@ function useDebounce(callee, delay = 100) {
 function handlePageScroll() {
   const header = document.querySelector(".header");
 
+  const headerStickyClass = "header_sticky";
+  const headerRemovedClass = "header_removed";
+
   let isSticky = false;
   let isAnimationOn = false;
 
@@ -30,16 +33,16 @@ function handlePageScroll() {
   const currentPosition = window.scrollY;
 
   if (currentPosition > HEADER_POSITION) {
-    header.classList.add("header_sticky");
+    header.classList.add(headerStickyClass);
     isSticky = true;
   }
 
-  function scrollHandler() {
+  const scrollHandler = () => {
     const currentPosition = window.scrollY;
 
     if (currentPosition > HEADER_POSITION) {
       if (!isSticky && !isAnimationOn) {
-        header.classList.add("header_sticky");
+        header.classList.add(headerStickyClass);
         isAnimationOn = true;
 
         header.addEventListener(
@@ -54,21 +57,21 @@ function handlePageScroll() {
     } else {
       if (isSticky && !isAnimationOn) {
         isSticky = false;
-        header.classList.add("header_removed");
+        header.classList.add(headerRemovedClass);
         isAnimationOn = true;
 
         header.addEventListener(
           "animationend",
           () => {
-            header.classList.remove("header_sticky");
-            header.classList.remove("header_removed");
+            header.classList.remove(headerStickyClass);
+            header.classList.remove(headerRemovedClass);
             isAnimationOn = false;
           },
           { once: true },
         );
       }
     }
-  }
+  };
 
   const debouncedScrollHandler = useDebounce(scrollHandler);
 
@@ -108,11 +111,11 @@ function handleForm() {
       };
     }
 
-    if (form && inputDateFrom && inputDateTo) {
-      form.onreset = () => {
-        inputDateFrom.classList.remove(activeDateInputClass);
-        inputDateTo.classList.remove(activeDateInputClass);
-      };
+    if (form) {
+      form.addEventListener("reset", () => {
+        inputDateFrom?.classList.remove(activeDateInputClass);
+        inputDateTo?.classList.remove(activeDateInputClass);
+      });
     }
   }
 
@@ -120,6 +123,7 @@ function handleForm() {
     const destinationSelect = document.querySelector(
       ".create-tour-form__select",
     );
+    const activeSelectClass = "create-tour-form__select_selected";
 
     if (!destinationSelect) {
       return;
@@ -127,11 +131,17 @@ function handleForm() {
 
     destinationSelect.onblur = () => {
       if (!destinationSelect.value) {
-        destinationSelect.classList.remove("create-tour-form__select_selected");
+        destinationSelect.classList.remove(activeSelectClass);
       } else {
-        destinationSelect.classList.add("create-tour-form__select_selected");
+        destinationSelect.classList.add(activeSelectClass);
       }
     };
+
+    if (form) {
+      form.addEventListener("reset", () => {
+        destinationSelect.classList.remove(activeSelectClass);
+      });
+    }
   }
 
   handleDateInput();
