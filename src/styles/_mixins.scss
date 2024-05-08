@@ -1,0 +1,23 @@
+@mixin underline($bottom: -2px, $height: 1px, $color: var(--color-black)) {
+  position: absolute;
+  bottom: $bottom;
+  left: 0;
+  width: 100%;
+  height: $height;
+  background-color: $color;
+  transform: scaleX(0);
+  content: "";
+  transition: transform 0.3s ease;
+  transform-origin: bottom right;
+}
+
+@mixin btn-details() {
+  display: flex;
+  max-width: min-content;
+  align-items: center;
+  padding: 7px 20px;
+  border-radius: 50px;
+  column-gap: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}

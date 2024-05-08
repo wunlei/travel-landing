@@ -1,0 +1,331 @@
+@use "./variables";
+
+.section-create-tour__subtitle {
+  max-width: 400px;
+}
+
+.create-tour-form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 70px;
+  border-radius: 50px;
+  background-color: var(--color-white);
+  row-gap: 32px;
+}
+
+.create-tour-form__container {
+  display: grid;
+  column-gap: 30px;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 33px;
+}
+
+.create-tour-form__label {
+  display: flex;
+  flex-direction: column;
+  row-gap: 7px;
+}
+
+.create-tour-form__input {
+  padding: 19px;
+  border: 1px solid var(--color-beige-200);
+  border-radius: 10px;
+  background-color: var(--color-beige-100);
+  transition: background-color 0.3s ease;
+  outline: none;
+
+  &::placeholder {
+    color: var(--color-gray-300);
+  }
+
+  &:focus {
+    background-color: var(--color-beige-200);
+    border-color: var(--color-gray-300);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-beige-200);
+    }
+  }
+}
+
+// Select
+
+.create-tour-form__select-container {
+  position: relative;
+}
+
+.create-tour-form__select-arrow {
+  position: absolute;
+  top: 57px;
+  right: 20px;
+  pointer-events: none;
+}
+
+.create-tour-form__select {
+  appearance: none;
+  color: var(--color-gray-300);
+
+  &:focus {
+    color: var(--color-black);
+  }
+}
+
+.create-tour-form__select_selected {
+  color: var(--color-black);
+}
+
+// Date
+
+.create-tour-form__input-date {
+  text-transform: uppercase;
+  color: var(--color-gray-300);
+
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+  }
+
+  &:focus {
+    color: var(--color-black);
+  }
+}
+
+.create-tour-form__input-date_has-value {
+  color: var(--color-black);
+}
+
+.create-tour-form__textarea {
+  resize: none;
+}
+
+// Radio
+
+.create-tour-form__set-age {
+  padding: 0;
+  border: none;
+  margin: 0;
+}
+
+.create-tour-form__set-age-title {
+  margin-bottom: 8px;
+}
+
+.create-tour-form__radiobtn-container {
+  display: flex;
+  column-gap: 30px;
+}
+
+.create-tour-form__label-radiobtn {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+  position: relative;
+}
+
+.create-tour-form__radiobtn {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border: 2px solid var(--color-black);
+  border-radius: 50%;
+  margin: 0;
+  appearance: none;
+}
+
+.create-tour-form__radiobtn-title::after {
+  position: absolute;
+  top: calc(50% - 3px);
+  left: 10px;
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-black);
+  content: "";
+  transform: scale(0);
+  transition: 120ms transform ease;
+}
+
+.create-tour-form__radiobtn:checked + .create-tour-form__radiobtn-title::after {
+  transform: scale(2);
+}
+
+// Checkbox
+
+.create-tour-form__label-checkbox {
+  display: flex;
+  align-items: center;
+  color: var(--color-gray-300);
+  column-gap: 20px;
+  position: relative;
+}
+
+.create-tour-form__checkbox {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  flex-shrink: 0;
+  border: 2px solid var(--color-black);
+  border-radius: 5px;
+  margin: 0;
+  appearance: none;
+  background-color: transparent;
+}
+
+.create-tour-form__checkbox-title::after {
+  position: absolute;
+  top: 0px;
+  left: 6px;
+  content: url(./assets/icons/check.svg);
+  opacity: 0;
+  pointer-events: none;
+  width: 13px;
+  height: 10px;
+}
+
+.create-tour-form__checkbox:checked + .create-tour-form__checkbox-title::after {
+  opacity: 1;
+}
+
+.create-tour-form__checkbox-title_accent {
+  color: var(--color-black);
+
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &:active {
+    color: var(--color-green-400);
+  }
+}
+
+.create-tour-form__btns-container {
+  display: flex;
+  column-gap: 30px;
+}
+
+.create-tour-form__btn {
+  padding: 15px 71px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.create-tour-form__btn-submit {
+  background-color: var(--color-green-400);
+  color: var(--color-white);
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-green-300);
+    }
+  }
+
+  &:active {
+    background-color: var(--color-green-200);
+  }
+}
+
+.create-tour-form__btn-reset {
+  background-color: var(--color-green-100);
+  color: var(--color-green-400);
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-gray-100);
+    }
+  }
+
+  &:active {
+    background-color: var(--color-gray-200);
+  }
+}
+
+@media screen and (max-width: variables.$tabletWidth) {
+  .create-tour-form {
+    padding: 60px;
+  }
+
+  .create-tour-form__container {
+    column-gap: 20px;
+  }
+
+  .create-tour-form__label-checkbox {
+    column-gap: 11px;
+  }
+}
+
+@media screen and (max-width: variables.$mobileWidth) {
+  .section-create-tour__subtitle {
+    margin-bottom: 40px;
+  }
+
+  .create-tour-form {
+    padding: 20px;
+    padding-bottom: 40px;
+    border-radius: 30px;
+    row-gap: 31px;
+  }
+
+  .create-tour-form__container {
+    grid-template-columns: 1fr;
+    row-gap: 31px;
+  }
+
+  .create-tour-form__input {
+    padding: 10px;
+  }
+
+  .create-tour-form__input-date {
+    padding: 8px;
+  }
+
+  .create-tour-form__select-arrow {
+    top: 40px;
+    right: 10px;
+  }
+
+  .create-tour-form__textarea {
+    min-height: 132px;
+  }
+
+  .create-tour-form__radiobtn {
+    width: 20px;
+    height: 20px;
+  }
+
+  .create-tour-form__radiobtn-title::after {
+    top: calc(50% - 2px);
+    left: 8px;
+    width: 5px;
+    height: 5px;
+  }
+
+  .create-tour-form__label-checkbox {
+    align-items: flex-start;
+  }
+
+  .create-tour-form__checkbox-title::after {
+    top: -3px;
+    left: 6px;
+    pointer-events: none;
+    width: 9px;
+    height: 5px;
+  }
+  .create-tour-form__checkbox {
+    width: 20px;
+    height: 20px;
+  }
+
+  .create-tour-form__btns-container {
+    column-gap: 9px;
+  }
+
+  .create-tour-form__btn {
+    padding: 12px 30px;
+  }
+}

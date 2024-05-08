@@ -1,0 +1,58 @@
+@use "./variables";
+
+.section-cta {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 135px;
+  column-gap: 30px;
+}
+
+.section-cta__img {
+  width: 370px;
+  height: 370px;
+  border-radius: 50px;
+  background-image: url(./assets/img/footer.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.section-cta__content {
+  display: flex;
+  max-width: 371px;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.section-cta__link {
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &:active {
+    text-decoration: underline;
+    color: var(--color-green-400);
+  }
+}
+
+@media screen and (max-width: variables.$mobileWidth) {
+  .section-cta {
+    flex-direction: column;
+    margin-bottom: 75px;
+    row-gap: 30px;
+  }
+
+  .section-cta__img {
+    width: 130px;
+    height: 133px;
+    border-radius: 20px;
+  }
+
+  .section-cta__content {
+    max-width: 291px;
+    text-align: center;
+  }
+}

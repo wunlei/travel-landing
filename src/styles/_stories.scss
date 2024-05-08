@@ -1,0 +1,128 @@
+@use "./variables";
+@use "./mixins";
+
+.story-cards {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  row-gap: 50px;
+}
+
+.story-card {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  width: 100%;
+  min-height: 567px;
+  padding: 58px 60px;
+  border-radius: 50px;
+  background: linear-gradient(
+    270deg,
+    rgba(0, 0, 0, 0) 0.01%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+  color: var(--color-white);
+  grid-template-rows: min-content auto min-content;
+  row-gap: 38px;
+}
+
+.story-card__bg {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #5b5c5d;
+  transition: transform 0.3s ease;
+}
+
+@for $i from 1 through 3 {
+  .story-card:nth-child(#{$i}) .story-card__bg {
+    background-image: url(./assets/img/story/#{$i}.jpg);
+  }
+}
+
+.story-card__content {
+  display: flex;
+  max-width: 554px;
+  flex-direction: column;
+  row-gap: 26px;
+}
+
+.story-card__content-list {
+  padding-left: 30px;
+  margin: 0;
+}
+
+.story-card__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.story-card__btn {
+  @include mixins.btn-details();
+
+  position: relative;
+  top: 7px;
+  left: -20px;
+}
+
+.story-card__links {
+  display: flex;
+  column-gap: 36px;
+}
+
+@media (hover: hover) {
+  .story-card:hover .story-card__btn {
+    background-color: var(--color-green-400);
+  }
+
+  .story-card:active .story-card__btn {
+    background-color: var(--color-orange-200);
+  }
+
+  .story-card:hover .story-card__bg {
+    transform: scale(1.2);
+  }
+}
+
+@media (hover: hover) {
+  .story-card__link:hover {
+    text-decoration: underline;
+  }
+}
+
+.story-card__link:active {
+  text-decoration: underline;
+  color: var(--color-orange-200);
+}
+
+@media screen and (max-width: variables.$mobileWidth) {
+  .story-cards {
+    row-gap: 20px;
+  }
+
+  .story-card {
+    min-height: 455px;
+    padding: 30px;
+    border-radius: 20px;
+    row-gap: 22px;
+  }
+
+  .story-card__title {
+    max-width: 140px;
+  }
+
+  .story-card__content-list {
+    padding-left: 24px;
+  }
+
+  .story-card__links {
+    display: none;
+  }
+}
