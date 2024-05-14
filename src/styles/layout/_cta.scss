@@ -1,4 +1,6 @@
-@use "./variables";
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+@use "../abstracts/extends";
 
 .section-cta {
   display: flex;
@@ -7,15 +9,27 @@
   justify-content: center;
   margin-bottom: 135px;
   column-gap: 30px;
+
+  @include mixins.media-small {
+    flex-direction: column;
+    margin-bottom: 75px;
+    row-gap: 30px;
+  }
 }
 
 .section-cta__img {
   width: 370px;
   height: 370px;
-  border-radius: 50px;
   background-image: url(./assets/img/footer.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+
+  @extend %border-radius;
+
+  @include mixins.media-small {
+    width: 130px;
+    height: 133px;
+  }
 }
 
 .section-cta__content {
@@ -23,6 +37,11 @@
   max-width: 371px;
   flex-direction: column;
   row-gap: 20px;
+
+  @include mixins.media-small {
+    max-width: 291px;
+    text-align: center;
+  }
 }
 
 .section-cta__link {
@@ -33,26 +52,6 @@
   }
 
   &:active {
-    text-decoration: underline;
     color: var(--color-green-400);
-  }
-}
-
-@media screen and (max-width: variables.$mobileWidth) {
-  .section-cta {
-    flex-direction: column;
-    margin-bottom: 75px;
-    row-gap: 30px;
-  }
-
-  .section-cta__img {
-    width: 130px;
-    height: 133px;
-    border-radius: 20px;
-  }
-
-  .section-cta__content {
-    max-width: 291px;
-    text-align: center;
   }
 }

@@ -1,4 +1,6 @@
-@use "./variables";
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+@use "../abstracts/extends";
 
 .section-review__title {
   max-width: 535px;
@@ -8,6 +10,15 @@
   display: grid;
   column-gap: 30px;
   grid-template-columns: 1fr 1fr;
+
+  @include mixins.media-medium {
+    column-gap: 18px;
+  }
+
+  @include mixins.media-small {
+    grid-template-columns: 1fr;
+    row-gap: 18px;
+  }
 }
 
 .review-card {
@@ -18,12 +29,22 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 40px;
-  border-radius: 50px;
   background-color: var(--color-beige-200);
+
+  @extend %border-radius;
+
+  @include mixins.media-small {
+    min-height: unset;
+    padding: 21px;
+  }
 }
 
 .review-card__text {
   margin-bottom: 1.22em;
+
+  @include mixins.media-small {
+    margin-bottom: 1.42em;
+  }
 }
 
 .review-card__text:last-of-type {
@@ -34,6 +55,11 @@
   display: flex;
   justify-content: space-between;
   margin-top: 68px;
+
+  @include mixins.media-small {
+    align-items: flex-end;
+    margin-top: 43px;
+  }
 }
 
 .review-card__avatar {
@@ -48,34 +74,4 @@
 
 .review-card__tour {
   color: var(--color-gray-300);
-}
-
-@media screen and (max-width: variables.$tabletWidth) {
-  .review-cards {
-    column-gap: 18px;
-  }
-}
-
-@media screen and (max-width: variables.$mobileWidth) {
-  .review-cards {
-    grid-template-columns: 1fr;
-    row-gap: 18px;
-  }
-
-  .review-card {
-    min-height: unset;
-    padding: 21px;
-    border-radius: 20px;
-  }
-
-  .review-card__text {
-    margin-bottom: 1.42em;
-
-  }
-
-  .review-card__footer {
-    align-items: flex-end;
-    margin-top: 43px;
-  }
-
 }
