@@ -81,6 +81,14 @@ function handlePageScroll() {
 function handleForm() {
   const form = document.getElementById("create-tour-form");
 
+  if (form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      console.log(Object.fromEntries(new FormData(form)))
+      form.reset();
+    });
+  }
+
   function handleDateInput() {
     const inputDateFrom = document.querySelector(
       ".create-tour-form__input-date-from",
