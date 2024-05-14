@@ -1,3 +1,5 @@
+@use "variables";
+
 @mixin underline($bottom: -2px, $height: 1px, $color: var(--color-black)) {
   position: absolute;
   bottom: $bottom;
@@ -11,13 +13,14 @@
   transform-origin: bottom right;
 }
 
-@mixin btn-details() {
-  display: flex;
-  max-width: min-content;
-  align-items: center;
-  padding: 7px 20px;
-  border-radius: 50px;
-  column-gap: 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+@mixin media-small {
+  @media (max-width: variables.$breakpoint-small) {
+    @content;
+  }
+}
+
+@mixin media-medium {
+  @media (max-width: variables.$breakpoint-medium) {
+    @content;
+  }
 }

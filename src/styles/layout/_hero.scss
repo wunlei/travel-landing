@@ -1,4 +1,5 @@
-@use "./variables";
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
 
 .section-hero {
   margin-top: 0;
@@ -7,6 +8,16 @@
   color: var(--color-white);
   row-gap: 50px;
   text-align: center;
+
+  @include mixins.media-medium {
+    padding-top: 117px;
+  }
+
+  @include mixins.media-small {
+    padding-top: 50px;
+    padding-bottom: 53px;
+    row-gap: 40px;
+  }
 }
 
 .hero-bg {
@@ -28,10 +39,22 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+
+  @include mixins.media-small {
+    max-height: 488px;
+  }
 }
 
 .section-hero__subtitle {
   max-width: 562px;
+
+  @include mixins.media-medium {
+    max-width: 470px;
+  }
+
+  @include mixins.media-small {
+    max-width: 310px;
+  }
 }
 
 .section-hero__btn {
@@ -54,31 +77,5 @@
   &:active {
     background-color: var(--color-orange-100);
     color: var(--color-black);
-  }
-}
-
-@media screen and (max-width: variables.$tabletWidth) {
-  .section-hero {
-    padding-top: 117px;
-  }
-
-  .section-hero__subtitle {
-    max-width: 470px;
-  }
-}
-
-@media screen and (max-width: variables.$mobileWidth) {
-  .section-hero {
-    padding-top: 50px;
-    padding-bottom: 53px;
-    row-gap: 40px;
-  }
-
-  .hero-bg {
-    max-height: 488px;
-  }
-
-  .section-hero__subtitle {
-    max-width: 310px;
   }
 }

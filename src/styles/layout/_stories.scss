@@ -1,11 +1,16 @@
-@use "./variables";
-@use "./mixins";
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
+@use "../abstracts/extends";
 
 .story-cards {
   display: flex;
   width: 100%;
   flex-direction: column;
   row-gap: 50px;
+
+  @include mixins.media-small {
+    row-gap: 20px;
+  }
 }
 
 .story-card {
@@ -15,7 +20,6 @@
   width: 100%;
   min-height: 567px;
   padding: 58px 60px;
-  border-radius: 50px;
   background: linear-gradient(
     270deg,
     rgba(0, 0, 0, 0) 0.01%,
@@ -24,6 +28,21 @@
   color: var(--color-white);
   grid-template-rows: min-content auto min-content;
   row-gap: 38px;
+  cursor: pointer;
+
+  @extend %border-radius;
+
+  @include mixins.media-small {
+    min-height: 455px;
+    padding: 30px;
+    row-gap: 22px;
+  }
+}
+
+.story-card__title {
+  @include mixins.media-small {
+    max-width: 140px;
+  }
 }
 
 .story-card__bg {
@@ -38,6 +57,12 @@
   background-size: cover;
   background-color: #5b5c5d;
   transition: transform 0.3s ease;
+
+  @media (hover: hover) {
+    .story-card:hover & {
+      transform: scale(1.2);
+    }
+  }
 }
 
 @for $i from 1 through 3 {
@@ -56,6 +81,10 @@
 .story-card__content-list {
   padding-left: 30px;
   margin: 0;
+
+  @include mixins.media-small {
+    padding-left: 24px;
+  }
 }
 
 .story-card__footer {
@@ -65,64 +94,41 @@
 }
 
 .story-card__btn {
-  @include mixins.btn-details();
+  @extend %btn-details;
 
   position: relative;
   top: 7px;
   left: -20px;
+
+  @media (hover: hover) {
+    .story-card:hover & {
+      background-color: var(--color-green-400);
+    }
+
+    .story-card:active & {
+      background-color: var(--color-orange-200);
+    }
+  }
 }
 
 .story-card__links {
   display: flex;
   column-gap: 36px;
-}
 
-@media (hover: hover) {
-  .story-card:hover .story-card__btn {
-    background-color: var(--color-green-400);
-  }
-
-  .story-card:active .story-card__btn {
-    background-color: var(--color-orange-200);
-  }
-
-  .story-card:hover .story-card__bg {
-    transform: scale(1.2);
-  }
-}
-
-@media (hover: hover) {
-  .story-card__link:hover {
-    text-decoration: underline;
-  }
-}
-
-.story-card__link:active {
-  text-decoration: underline;
-  color: var(--color-orange-200);
-}
-
-@media screen and (max-width: variables.$mobileWidth) {
-  .story-cards {
-    row-gap: 20px;
-  }
-
-  .story-card {
-    min-height: 455px;
-    padding: 30px;
-    border-radius: 20px;
-    row-gap: 22px;
-  }
-
-  .story-card__title {
-    max-width: 140px;
-  }
-
-  .story-card__content-list {
-    padding-left: 24px;
-  }
-
-  .story-card__links {
+  @include mixins.media-small {
     display: none;
+  }
+}
+
+.story-card__link {
+  @media (hover: hover) {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &:active {
+    text-decoration: underline;
+    color: var(--color-orange-200);
   }
 }

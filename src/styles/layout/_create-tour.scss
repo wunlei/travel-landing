@@ -1,7 +1,12 @@
-@use "./variables";
+@use "../abstracts/variables";
+@use "../abstracts/mixins";
 
 .section-create-tour__subtitle {
   max-width: 400px;
+
+  @include mixins.media-small {
+    margin-bottom: 40px;
+  }
 }
 
 .create-tour-form {
@@ -12,6 +17,17 @@
   border-radius: 50px;
   background-color: var(--color-white);
   row-gap: 32px;
+
+  @include mixins.media-medium {
+    padding: 60px;
+  }
+
+  @include mixins.media-small {
+    padding: 20px;
+    padding-bottom: 40px;
+    border-radius: 30px;
+    row-gap: 31px;
+  }
 }
 
 .create-tour-form__container {
@@ -19,6 +35,15 @@
   column-gap: 30px;
   grid-template-columns: 1fr 1fr;
   row-gap: 33px;
+
+  @include mixins.media-medium {
+    column-gap: 20px;
+  }
+
+  @include mixins.media-small {
+    grid-template-columns: 1fr;
+    row-gap: 31px;
+  }
 }
 
 .create-tour-form__label {
@@ -46,8 +71,13 @@
 
   @media (hover: hover) {
     &:hover {
+      cursor: pointer;
       background-color: var(--color-beige-200);
     }
+  }
+
+  @include mixins.media-small {
+    padding: 10px;
   }
 }
 
@@ -62,6 +92,11 @@
   top: 57px;
   right: 20px;
   pointer-events: none;
+
+  @include mixins.media-small {
+    top: 40px;
+    right: 10px;
+  }
 }
 
 .create-tour-form__select {
@@ -90,6 +125,10 @@
   &:focus {
     color: var(--color-black);
   }
+
+  @include mixins.media-small {
+    padding: 8px;
+  }
 }
 
 .create-tour-form__input-date_has-value {
@@ -98,6 +137,10 @@
 
 .create-tour-form__textarea {
   resize: none;
+
+  @include mixins.media-small {
+    min-height: 132px;
+  }
 }
 
 // Radio
@@ -132,6 +175,12 @@
   border-radius: 50%;
   margin: 0;
   appearance: none;
+  cursor: pointer;
+
+  @include mixins.media-small {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .create-tour-form__radiobtn-title::after {
@@ -146,6 +195,13 @@
   content: "";
   transform: scale(0);
   transition: 120ms transform ease;
+
+  @include mixins.media-small {
+    top: calc(50% - 2px);
+    left: 8px;
+    width: 5px;
+    height: 5px;
+  }
 }
 
 .create-tour-form__radiobtn:checked + .create-tour-form__radiobtn-title::after {
@@ -160,6 +216,14 @@
   color: var(--color-gray-300);
   column-gap: 20px;
   position: relative;
+
+  @include mixins.media-medium {
+    column-gap: 11px;
+  }
+
+  @include mixins.media-small {
+    align-items: flex-start;
+  }
 }
 
 .create-tour-form__checkbox {
@@ -172,17 +236,35 @@
   margin: 0;
   appearance: none;
   background-color: transparent;
+  cursor: pointer;
+
+  @include mixins.media-small {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 .create-tour-form__checkbox-title::after {
   position: absolute;
-  top: 0px;
+  top: calc(50% - 5px);
   left: 6px;
-  content: url(./assets/icons/check.svg);
+  content: "";
+  background-image: url(./assets/icons/check.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
   opacity: 0;
   pointer-events: none;
   width: 13px;
   height: 10px;
+
+  @include mixins.media-small {
+    top: 6px;
+    left: 5px;
+    width: 11px;
+    height: 8px;
+  }
+
+
 }
 
 .create-tour-form__checkbox:checked + .create-tour-form__checkbox-title::after {
@@ -206,6 +288,10 @@
 .create-tour-form__btns-container {
   display: flex;
   column-gap: 30px;
+
+  @include mixins.media-small {
+    column-gap: 9px;
+  }
 }
 
 .create-tour-form__btn {
@@ -213,6 +299,10 @@
   border-radius: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
+  @include mixins.media-small {
+    padding: 12px 30px;
+  }
 }
 
 .create-tour-form__btn-submit {
@@ -242,90 +332,5 @@
 
   &:active {
     background-color: var(--color-gray-200);
-  }
-}
-
-@media screen and (max-width: variables.$tabletWidth) {
-  .create-tour-form {
-    padding: 60px;
-  }
-
-  .create-tour-form__container {
-    column-gap: 20px;
-  }
-
-  .create-tour-form__label-checkbox {
-    column-gap: 11px;
-  }
-}
-
-@media screen and (max-width: variables.$mobileWidth) {
-  .section-create-tour__subtitle {
-    margin-bottom: 40px;
-  }
-
-  .create-tour-form {
-    padding: 20px;
-    padding-bottom: 40px;
-    border-radius: 30px;
-    row-gap: 31px;
-  }
-
-  .create-tour-form__container {
-    grid-template-columns: 1fr;
-    row-gap: 31px;
-  }
-
-  .create-tour-form__input {
-    padding: 10px;
-  }
-
-  .create-tour-form__input-date {
-    padding: 8px;
-  }
-
-  .create-tour-form__select-arrow {
-    top: 40px;
-    right: 10px;
-  }
-
-  .create-tour-form__textarea {
-    min-height: 132px;
-  }
-
-  .create-tour-form__radiobtn {
-    width: 20px;
-    height: 20px;
-  }
-
-  .create-tour-form__radiobtn-title::after {
-    top: calc(50% - 2px);
-    left: 8px;
-    width: 5px;
-    height: 5px;
-  }
-
-  .create-tour-form__label-checkbox {
-    align-items: flex-start;
-  }
-
-  .create-tour-form__checkbox-title::after {
-    top: -3px;
-    left: 6px;
-    pointer-events: none;
-    width: 9px;
-    height: 5px;
-  }
-  .create-tour-form__checkbox {
-    width: 20px;
-    height: 20px;
-  }
-
-  .create-tour-form__btns-container {
-    column-gap: 9px;
-  }
-
-  .create-tour-form__btn {
-    padding: 12px 30px;
   }
 }
