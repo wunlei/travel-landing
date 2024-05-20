@@ -37,7 +37,7 @@ function handlePageScroll() {
     isSticky = true;
   }
 
-  const scrollHandler = () => {
+  function scrollHandler() {
     const currentPosition = window.scrollY;
 
     if (currentPosition > HEADER_POSITION) {
@@ -71,7 +71,7 @@ function handlePageScroll() {
         );
       }
     }
-  };
+  }
 
   const debouncedScrollHandler = useDebounce(scrollHandler);
 
@@ -84,7 +84,7 @@ function handleForm() {
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      console.log(Object.fromEntries(new FormData(form)))
+      console.log(Object.fromEntries(new FormData(form)));
       form.reset();
     });
   }
@@ -100,23 +100,23 @@ function handleForm() {
     const activeDateInputClass = "create-tour-form__input-date_has-value";
 
     if (inputDateFrom) {
-      inputDateFrom.onchange = () => {
+      inputDateFrom.addEventListener("change", () => {
         if (inputDateFrom.value) {
           inputDateFrom.classList.add(activeDateInputClass);
         } else {
           inputDateFrom.classList.remove(activeDateInputClass);
         }
-      };
+      });
     }
 
     if (inputDateTo) {
-      inputDateTo.onchange = () => {
+      inputDateTo.addEventListener("change", () => {
         if (inputDateTo.value) {
           inputDateTo.classList.add(activeDateInputClass);
         } else {
           inputDateTo.classList.remove(activeDateInputClass);
         }
-      };
+      });
     }
 
     if (form) {
@@ -137,13 +137,13 @@ function handleForm() {
       return;
     }
 
-    destinationSelect.onblur = () => {
+    destinationSelect.addEventListener("blur", () => {
       if (!destinationSelect.value) {
         destinationSelect.classList.remove(activeSelectClass);
       } else {
         destinationSelect.classList.add(activeSelectClass);
       }
-    };
+    });
 
     if (form) {
       form.addEventListener("reset", () => {
