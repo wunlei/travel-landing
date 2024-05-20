@@ -2,32 +2,35 @@
 @use "../abstracts/mixins";
 
 .section-hero {
+  row-gap: 50px;
   margin-top: 0;
   padding-top: 119px;
   padding-bottom: 120px;
-  color: var(--color-white);
-  row-gap: 50px;
+
   text-align: center;
+  color: var(--color-white);
 
   @include mixins.media-medium {
     padding-top: 117px;
   }
 
   @include mixins.media-small {
+    row-gap: 40px;
     padding-top: 50px;
     padding-bottom: 53px;
-    row-gap: 40px;
   }
 }
 
 .hero-bg {
   position: absolute;
-  z-index: -1;
   top: 0;
   left: 0;
+  z-index: -1;
+
   width: 100%;
   height: 100%;
   max-height: 831px;
+
   background-color: #2b351c;
   background-image: linear-gradient(
       180deg,
@@ -36,8 +39,8 @@
     ),
     linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url(./assets/img/header.jpg);
-  background-position: center;
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
 
   @include mixins.media-small {
@@ -60,22 +63,24 @@
 .section-hero__btn {
   padding: 5px 20px;
   border-radius: 10px;
-  background-color: var(--color-white);
+
   color: var(--color-black);
+  background-color: var(--color-white);
   cursor: pointer;
+
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
 
   @media (hover: hover) {
     &:hover {
-      background-color: var(--color-orange-200);
       color: var(--color-white);
+      background-color: var(--color-orange-200);
     }
   }
 
   &:active {
-    background-color: var(--color-orange-100);
     color: var(--color-black);
+    background-color: var(--color-orange-100);
   }
 }

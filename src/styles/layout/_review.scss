@@ -8,8 +8,8 @@
 
 .review-cards {
   display: grid;
-  column-gap: 30px;
   grid-template-columns: 1fr 1fr;
+  column-gap: 30px;
 
   @include mixins.media-medium {
     column-gap: 18px;
@@ -23,12 +23,13 @@
 
 .review-card {
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   max-width: 570px;
   height: 100%;
   min-height: 673px;
-  flex-direction: column;
-  justify-content: space-between;
   padding: 40px;
+
   background-color: var(--color-beige-200);
 
   @extend %border-radius;
@@ -65,6 +66,7 @@
 .review-card__avatar {
   width: 75px;
   height: 75px;
+
   border-radius: 100px;
 }
 

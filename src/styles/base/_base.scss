@@ -36,8 +36,8 @@ h5,
 h6,
 p,
 button {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 a {
@@ -47,16 +47,18 @@ a {
 
 button {
   border: none;
-  background-color: transparent;
   color: inherit;
+  background-color: transparent;
 }
 
 .body {
   position: relative;
   margin: 0;
-  background-color: var(--color-beige-100);
-  color: var(--color-black);
+
   font-family: "Roboto", sans-serif;
+  color: var(--color-black);
+
+  background-color: var(--color-beige-100);
 }
 
 .main {
@@ -75,9 +77,9 @@ button {
 
 .section {
   display: flex;
-  max-width: 1170px;
   flex-direction: column;
   align-items: center;
+  max-width: 1170px;
   margin: 0 auto;
   margin-top: 135px;
   scroll-margin-top: 90px;
@@ -93,8 +95,8 @@ button {
 }
 
 .section__title {
-  text-align: center;
   margin-bottom: 30px;
+  text-align: center;
 
   @include mixins.media-small {
     margin-bottom: 20px;
@@ -102,8 +104,8 @@ button {
 }
 
 .section__subtitle {
-  margin-bottom: 100px;
   max-width: 420px;
+  margin-bottom: 100px;
   text-align: center;
 
   @include mixins.media-small {

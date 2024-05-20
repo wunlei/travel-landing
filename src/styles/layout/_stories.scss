@@ -4,9 +4,9 @@
 
 .story-cards {
   display: flex;
-  width: 100%;
   flex-direction: column;
   row-gap: 50px;
+  width: 100%;
 
   @include mixins.media-small {
     row-gap: 20px;
@@ -15,27 +15,29 @@
 
 .story-card {
   position: relative;
+
   display: grid;
-  overflow: hidden;
+  grid-template-rows: min-content auto min-content;
+  row-gap: 38px;
   width: 100%;
   min-height: 567px;
   padding: 58px 60px;
+
+  color: var(--color-white);
   background: linear-gradient(
     270deg,
     rgba(0, 0, 0, 0) 0.01%,
     rgba(0, 0, 0, 0.2) 100%
   );
-  color: var(--color-white);
-  grid-template-rows: min-content auto min-content;
-  row-gap: 38px;
+  overflow: hidden;
   cursor: pointer;
 
   @extend %border-radius;
 
   @include mixins.media-small {
+    row-gap: 22px;
     min-height: 455px;
     padding: 30px;
-    row-gap: 22px;
   }
 }
 
@@ -47,15 +49,18 @@
 
 .story-card__bg {
   position: absolute;
-  z-index: -1;
   top: 0;
   left: 0;
+  z-index: -1;
+
   width: 100%;
   height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+
   background-color: #5b5c5d;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
   transition: transform 0.3s ease;
 
   @media (hover: hover) {
@@ -73,14 +78,14 @@
 
 .story-card__content {
   display: flex;
-  max-width: 554px;
   flex-direction: column;
   row-gap: 26px;
+  max-width: 554px;
 }
 
 .story-card__content-list {
-  padding-left: 30px;
   margin: 0;
+  padding-left: 30px;
 
   @include mixins.media-small {
     padding-left: 24px;
@@ -89,16 +94,16 @@
 
 .story-card__footer {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
+  align-items: flex-end;
 }
 
 .story-card__btn {
-  @extend %btn-details;
-
   position: relative;
   top: 7px;
   left: -20px;
+
+  @extend %btn-details;
 
   @media (hover: hover) {
     .story-card:hover & {

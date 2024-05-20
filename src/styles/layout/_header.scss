@@ -20,11 +20,13 @@
 
 .header_sticky {
   position: sticky;
-  z-index: 100;
   top: 0;
-  backdrop-filter: blur(27px);
-  background: rgba(243, 239, 232, 0.6);
+  z-index: 100;
+
   color: var(--color-black);
+  background: rgba(243, 239, 232, 0.6);
+  backdrop-filter: blur(27px);
+
   animation: 0.3s ease forwards show-header;
 
   .header__logo {
@@ -62,9 +64,9 @@
 
 .header-content {
   display: flex;
-  max-width: 1168px;
-  align-items: center;
   justify-content: space-between;
+  align-items: center;
+  max-width: 1168px;
   margin: 0 auto;
 
   @include mixins.media-medium {

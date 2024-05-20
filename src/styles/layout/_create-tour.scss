@@ -11,30 +11,32 @@
 
 .create-tour-form {
   display: flex;
-  width: 100%;
   flex-direction: column;
+  row-gap: 32px;
+  width: 100%;
   padding: 70px;
+
   border-radius: 50px;
   background-color: var(--color-white);
-  row-gap: 32px;
 
   @include mixins.media-medium {
     padding: 60px;
   }
 
   @include mixins.media-small {
+    row-gap: 31px;
     padding: 20px;
     padding-bottom: 40px;
+
     border-radius: 30px;
-    row-gap: 31px;
   }
 }
 
 .create-tour-form__container {
   display: grid;
-  column-gap: 30px;
   grid-template-columns: 1fr 1fr;
   row-gap: 33px;
+  column-gap: 30px;
 
   @include mixins.media-medium {
     column-gap: 20px;
@@ -54,25 +56,27 @@
 
 .create-tour-form__input {
   padding: 19px;
+
   border: 1px solid var(--color-beige-200);
   border-radius: 10px;
   background-color: var(--color-beige-100);
-  transition: background-color 0.3s ease;
   outline: none;
+
+  transition: background-color 0.3s ease;
 
   &::placeholder {
     color: var(--color-gray-300);
   }
 
   &:focus {
-    background-color: var(--color-beige-200);
     border-color: var(--color-gray-300);
+    background-color: var(--color-beige-200);
   }
 
   @media (hover: hover) {
     &:hover {
-      cursor: pointer;
       background-color: var(--color-beige-200);
+      cursor: pointer;
     }
   }
 
@@ -100,8 +104,8 @@
 }
 
 .create-tour-form__select {
-  appearance: none;
   color: var(--color-gray-300);
+  appearance: none;
 
   &:focus {
     color: var(--color-black);
@@ -127,6 +131,7 @@
   }
 
   @include mixins.media-small {
+    min-width: -webkit-fill-available;
     padding: 8px;
   }
 }
@@ -146,9 +151,9 @@
 // Radio
 
 .create-tour-form__set-age {
+  margin: 0;
   padding: 0;
   border: none;
-  margin: 0;
 }
 
 .create-tour-form__set-age-title {
@@ -161,21 +166,21 @@
 }
 
 .create-tour-form__label-radiobtn {
+  position: relative;
   display: flex;
   align-items: center;
   column-gap: 10px;
-  position: relative;
 }
 
 .create-tour-form__radiobtn {
+  flex-shrink: 0;
   width: 26px;
   height: 26px;
-  flex-shrink: 0;
+  margin: 0;
   border: 2px solid var(--color-black);
   border-radius: 50%;
-  margin: 0;
-  appearance: none;
   cursor: pointer;
+  appearance: none;
 
   @include mixins.media-small {
     width: 20px;
@@ -187,14 +192,18 @@
   position: absolute;
   top: calc(50% - 3px);
   left: 10px;
+
   display: block;
   width: 6px;
   height: 6px;
+
   border-radius: 50%;
   background-color: var(--color-black);
-  content: "";
   transform: scale(0);
+
   transition: 120ms transform ease;
+
+  content: "";
 
   @include mixins.media-small {
     top: calc(50% - 2px);
@@ -211,11 +220,13 @@
 // Checkbox
 
 .create-tour-form__label-checkbox {
+  position: relative;
+
   display: flex;
   align-items: center;
-  color: var(--color-gray-300);
   column-gap: 20px;
-  position: relative;
+
+  color: var(--color-gray-300);
 
   @include mixins.media-medium {
     column-gap: 11px;
@@ -228,15 +239,17 @@
 
 .create-tour-form__checkbox {
   position: relative;
+
+  flex-shrink: 0;
   width: 25px;
   height: 25px;
-  flex-shrink: 0;
+  margin: 0;
+
   border: 2px solid var(--color-black);
   border-radius: 5px;
-  margin: 0;
-  appearance: none;
   background-color: transparent;
   cursor: pointer;
+  appearance: none;
 
   @include mixins.media-small {
     width: 20px;
@@ -248,23 +261,24 @@
   position: absolute;
   top: calc(50% - 5px);
   left: 6px;
-  content: "";
-  background-image: url(./assets/icons/check.svg);
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0;
-  pointer-events: none;
+
   width: 13px;
   height: 10px;
+
+  background-image: url(./assets/icons/check.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  content: "";
+  pointer-events: none;
 
   @include mixins.media-small {
     top: 6px;
     left: 5px;
+
     width: 11px;
     height: 8px;
   }
-
-
 }
 
 .create-tour-form__checkbox:checked + .create-tour-form__checkbox-title::after {
@@ -296,8 +310,10 @@
 
 .create-tour-form__btn {
   padding: 15px 71px;
+
   border-radius: 10px;
   cursor: pointer;
+
   transition: background-color 0.3s ease;
 
   @include mixins.media-small {
@@ -306,8 +322,8 @@
 }
 
 .create-tour-form__btn-submit {
-  background-color: var(--color-green-400);
   color: var(--color-white);
+  background-color: var(--color-green-400);
 
   @media (hover: hover) {
     &:hover {
@@ -321,8 +337,8 @@
 }
 
 .create-tour-form__btn-reset {
-  background-color: var(--color-green-100);
   color: var(--color-green-400);
+  background-color: var(--color-green-100);
 
   @media (hover: hover) {
     &:hover {

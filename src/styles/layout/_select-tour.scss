@@ -22,8 +22,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  column-gap: 30px;
   row-gap: 10px;
+  column-gap: 30px;
 
   @include mixins.media-small {
     column-gap: 10px;
@@ -56,8 +56,8 @@
   color: var(--color-orange-200);
 
   &::after {
-    transform: scaleX(1);
     background-color: var(--color-orange-200);
+    transform: scaleX(1);
   }
 }
 
@@ -74,23 +74,24 @@
 
 .tour-card {
   position: relative;
-  overflow: hidden;
   width: 370px;
   height: 531px;
+
+  color: var(--color-white);
   background-image: linear-gradient(
     360deg,
     rgba(0, 0, 0, 0.4) 0%,
     rgba(232, 130, 130, 0.06) 48.44%,
     rgba(0, 0, 0, 0.5) 100%
   );
-  color: var(--color-white);
+  overflow: hidden;
   cursor: pointer;
 
   @extend %border-radius;
 
   @include mixins.media-medium {
-    max-width: 450px;
     width: 100%;
+    max-width: 450px;
   }
 
   @include mixins.media-small {
@@ -100,14 +101,17 @@
 
 .tour-card__bg {
   position: absolute;
-  z-index: -1;
   top: 0;
   left: 0;
+  z-index: -1;
+
   width: 100%;
   height: 100%;
-  background-position: center;
+
   background-repeat: no-repeat;
+  background-position: center;
   background-size: cover;
+
   transition: transform 0.3s ease;
 }
 
@@ -125,13 +129,14 @@
 
 .tour-card__content {
   display: flex;
-  height: 100%;
   flex-direction: column;
   justify-content: space-between;
+  height: 100%;
 }
 
 .tour-card__header {
   padding: 50px;
+
   transition: padding 0.3s ease;
 
   @include mixins.media-small {
@@ -155,9 +160,9 @@
 }
 
 .tour-card__btn {
-  @extend %btn-details;
-
   margin: 43px 31px;
+
+  @extend %btn-details;
 
   @media (hover: hover) {
     .tour-card:hover & {

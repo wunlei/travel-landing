@@ -4,13 +4,17 @@
   position: absolute;
   bottom: $bottom;
   left: 0;
+
   width: 100%;
   height: $height;
+
   background-color: $color;
   transform: scaleX(0);
-  content: "";
-  transition: transform 0.3s ease;
   transform-origin: bottom right;
+
+  transition: transform 0.3s ease;
+
+  content: "";
 }
 
 @mixin media-small {

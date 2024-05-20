@@ -2,12 +2,14 @@
 
 %btn-details {
   display: flex;
-  max-width: min-content;
   align-items: center;
-  padding: 7px 20px;
-  border-radius: 50px;
   column-gap: 15px;
+  max-width: min-content;
+  padding: 7px 20px;
+
+  border-radius: 50px;
   cursor: pointer;
+
   transition: background-color 0.3s ease;
 }
 

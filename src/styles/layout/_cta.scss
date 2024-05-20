@@ -5,21 +5,22 @@
 .section-cta {
   display: flex;
   flex-direction: row;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 135px;
+  align-items: center;
   column-gap: 30px;
+  margin-bottom: 135px;
 
   @include mixins.media-small {
     flex-direction: column;
-    margin-bottom: 75px;
     row-gap: 30px;
+    margin-bottom: 75px;
   }
 }
 
 .section-cta__img {
   width: 370px;
   height: 370px;
+
   background-image: url(./assets/img/footer.jpg);
   background-repeat: no-repeat;
   background-size: cover;
@@ -34,9 +35,9 @@
 
 .section-cta__content {
   display: flex;
-  max-width: 371px;
   flex-direction: column;
   row-gap: 20px;
+  max-width: 371px;
 
   @include mixins.media-small {
     max-width: 291px;
